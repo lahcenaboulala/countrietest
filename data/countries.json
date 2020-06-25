@@ -1,0 +1,12 @@
+[
+    {
+        "name": "maroc",
+        "code": "ma",
+        "zipcod": "0000"
+    },
+    {
+        "name": "algerie",
+        "code": "al",
+        "zipcod":"0001"
+    }
+]
