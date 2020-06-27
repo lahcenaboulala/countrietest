@@ -1,12 +1,15 @@
+
 [
     {
         "name": "maroc",
         "code": "ma",
-        "zipcod": "0000"
+        "phone": "+212",
+        " currency": "dh"
     },
     {
         "name": "algerie",
         "code": "al",
-        "zipcod":"0001"
+        "phone":"+214",
+        " currency": "dinar"
     }
 ]

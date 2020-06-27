@@ -5,7 +5,10 @@ const app = express();
 const countrie = require('./routes/countrieroute'); // Imports routes for the products
 
 
-app.use('/countries', countrie);
+app.use('/', countrie);
+//app.get('/', (request, response) => {
+   // response.send('/ rout, Hello Word');
+ // });
 
 let port = 1234;
 
