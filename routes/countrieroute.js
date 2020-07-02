@@ -1,16 +1,18 @@
 const express = require('express');
 const router = express.Router();
 
-const country = require('../controllers/countrieController')
+const countrie = require('../controllers/countrieController')
 //const product_controller = require('../controllers/countriecontroller');
 //const test = require('../test/test');
 router.route('/api/countries')
-    .get(country.getAllCountries)
-    .post(country.createCountry);
-    router.route('/api/countries/:countryId')
-    .get(country.getCountry)
-    .put(country.updateCountry)
-    .delete(country.deleteCountry);
+    .get(countrie.getAllCountries)
+
+    router.route('/api/countries/create')
+    .post(countrie.createCountrie);
+    router.route('/api/countries/:countrieId')
+    .get(countrie.getCountrie)
+    .put(countrie.updateCountrie)
+    .delete(countrie.deleteCountrie);
 
 module.exports = router;
 

@@ -1,30 +1,28 @@
 const Countries = require('../models/countriemodel');
 const Joi = require('@hapi/joi');
 
-exports.test = function (req, res) { Countrie.find()
-    res.send('Greetings from the Test controller!');
-};
-exports.getCountry = (req, res) => {
-  Countries.findById(req.params.countryId, (err, country) => {
+
+exports.getCountrie = (req, res) => {
+  Countries.findById(req.params.countrieId, (err, countrie) => {
       if (err) {
           res.send(err);
           return;
       }
-      res.json(country);
+      res.json(countrie);
   });
 };
 exports.getAllCountries = (req, res) => {
-  Countries.find({}, (err, country) => {
+  Countries.find({}, (err, countrie) => {
       if (err) {
           res.send(err);
           return;
       }
-      res.json(country);
+      res.json(countrie);
   });
 };
 
-exports.createCountry = (req, res) => {
-  const newCountry = new Countries(req.body);
+exports.createCountrie = (req, res) => {
+  const newCountrie = new Countries(req.body);
 
   const { error } = validateBody(req.body)
   if (error) {
@@ -33,46 +31,47 @@ exports.createCountry = (req, res) => {
       return
   }
 
-  newCountry.save((err, country) => {
+  newCountrie.save((err, countrie) => {
       if (err) {
           res.send(err);
           return;
       }
-      res.json(country);
+      res.json(countrie);
   });
 };
 
-exports.updateCountry = (req, res) => {
-  Countries.findOneAndUpdate({ _id: req.params.countryId }, req.body,
+exports.updateCountrie = (req, res) => {
+  Countries.findOneAndUpdate({ _id: req.params.countrieId }, req.body,
       (err, country) => {
           if (err) {
               res.send(err);
               return;
           }
-          res.json(country);
+          res.json(countrie);
       });
 };
 
-exports.deleteCountry = (req, res) => {
+exports.deleteCountrie = (req, res) => {
 
-  Countries.deleteOne({ _id: req.params.countryId }, (err) => {
+  Countries.deleteOne({ _id: req.params.countrieId }, (err) => {
       if (err) {
           res.send(err);
           return;
       }
       res.json({
-          message: `country ${req.params.countryId} successfully deleted`
+          message: `country ${req.params.countrieId} successfully deleted`
       });
   });
 };
 
 function validateBody(body) {
   const schema = Joi.object({
-      countryName: Joi.string().min(3).required(),
-      countryCurrency: Joi.string().min(3).required(),
-      countryCapital: Joi.string().min(3).required(),
-      primaryLanguage: Joi.string().min(3).required()
+      countrieName: Joi.string().min(3).required(),
+      countriecode: Joi.string().min(3).required(),
+      countriephone: Joi.number().min(3).required(),
+      countrieCurrency: Joi.string().min(3).required(),
+      
+     
   })
   return schema.validate(body)
 }
- 
