@@ -1,16 +1,42 @@
 const Countries = require('../models/countriemodel');
+const States = require('../models/statesmodel');
 const Joi = require('@hapi/joi');
+const { string } = require('@hapi/joi');
 
+
+
+exports.getCountriecode = (req, res) => {
+    Countries.find(countrie ,code1, (err, countrie) => {
+        if (err) {
+            res.send(err);
+            return;
+        }
+        res.json(countrie);
+    });
+  };
 
 exports.getCountrie = (req, res) => {
-  Countries.findById(req.params.countrieId, (err, countrie) => {
-      if (err) {
-          res.send(err);
-          return;
-      }
-      res.json(countrie);
-  });
-};
+    Countries.findById(req.params.countrieId, (err, countrie) => {
+        if (err) {
+            res.send(err);
+            return;
+        }
+    res.json(countrie);
+    });
+  };
+
+ // Countries.findById(req.params.countrieId)
+  //.populate('States')
+ 
+   
+// .exec(function (err, Countries){
+   // if (err) {
+     //res.send(err);
+     //return;
+   //}
+  //res.json(countrie);
+//})
+//};
 exports.getAllCountries = (req, res) => {
   Countries.find({}, (err, countrie) => {
       if (err) {
@@ -75,3 +101,13 @@ function validateBody(body) {
   })
   return schema.validate(body)
 }
+exports.getCountriecode = (req, res) => {
+    Countries.find(country => country.getCountriecode, (err, countrie) => {
+        if (err) {
+            res.send(err);
+            return;
+        }
+        res.json(countrie);
+    });
+}
+

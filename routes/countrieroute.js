@@ -13,6 +13,8 @@ router.route('/api/countries')
     .get(countrie.getCountrie)
     .put(countrie.updateCountrie)
     .delete(countrie.deleteCountrie);
+    router.route('/api/countries/:code1')
+    .get(countrie.getCountriecode)
 
 module.exports = router;
 

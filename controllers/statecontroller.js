@@ -2,20 +2,24 @@ const States = require('../models/statesmodel');
 const Joi = require('@hapi/joi');
 
 exports.getState = (req, res) => {
-    States.findById(req.params.stateId, (err, state) => {
+    
+  
+   States.findById(req.params.stateId, (err, state) => {
         if (err) {
             res.send(err);
             return;
         }
-        res.json(state);
+    res.json(state);
     });
   };
   exports.getAllStates = (req, res) => {
+   
+     
     States.find({}, (err, state) => {
         if (err) {
-            res.send(err);
-            return;
-        }
+           res.send(err);
+           return;
+      }
         res.json(state);
     });
   };
